@@ -111,15 +111,17 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'dbTEST.sqlite3'),
     }
-}
+}"""
 
-"""
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bingo',
         'USER': 'userbingo',
-        'PASSWORD': '1234',
+        # 'USER': 'userbingo',
+        'PASSWORD': '',
+        # 'PASSWORD': '1234',
         'HOST': 'localhost',
         'PORT': '',
     }
