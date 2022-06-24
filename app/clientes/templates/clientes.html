@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block titulo %}
+Bingos Marvel | Clientes
+{% endblock titulo %}
+
+{% block titulo_page %}
+	Clientes
+{% endblock titulo_page %}
+
+
+{% block main %}
+<div class="row">
+  <div class="col-lg-4">
+  	 <a class="btn btn-primary" href="/cliente/crear/"><i class="fa fa-plus"></i> Nuevo</a>
+  </div>
+
+</div>
+<br>
+              <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              Listado de Clientes
+                          </header>
+                          <div class="table-responsive">
+                            <table class="table  table-hover">
+                              <thead>
+                                <tr>
+                                  <th>ID</th>
+                                  <th>Nombre</th>
+                                  <th>Apellido</th>
+                                  <th>Cédula</th>
+                                  <th>Teléfono</th>
+                                  <th>Foto</th>
+                                  <th>Sala</th>
+                                  <th>Acción</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              {% for cliente in object_list%}
+                                <tr id="{{cliente.pk}}_fila">
+                                  <td>{{cliente.pk}}</td>
+                                  <td>{{cliente.nombre}}</td>
+                                  <td>{{cliente.apellido}}</td>
+                                  <td>{{cliente.dni}}</td>
+                                  <td>{{cliente.telefono}}</td>
+                                  <td>
+                    {% thumbnail cliente.thumb "30x30" crop="center" as im %}
+                      <img src="{{ im.url }}" class="img-circle" alt="">
+                    {% endthumbnail %}</td>
+
+                                  <td>{{cliente.sala}}</td>
+                                  
+                                  <td>
+	                                  <div class="btn-group">
+	                                      <a class="btn btn-primary" href="editar/{{cliente.id}}/"><i class="icon_pencil-edit"></i></a>
+	                                      
+	                                      <a class="btn btn-danger" href="Javascript:BorrarCliente({{cliente.pk}},'{{csrf_token}}');void(0);"><i class="icon_close_alt2"></i></a>
+	                                  </div>
+                                  </td>
+                                </tr>
+                                {% endfor %}
+                              </tbody>
+                             </table>
+        {# .... **Now the pagination section** .... #}
+            &nbsp;&nbsp;
+            {% if is_paginated %}
+              <ul class="pagination">
+                {% if page_obj.has_previous %}
+                  <li><a href="?page=1"><<</a></li>
+                  <li><a href="?page={{ page_obj.previous_page_number }}"><</a></li>
+                {% endif %}
+                {% for i in paginator.page_range %}
+                  <li {% if page_obj.number == i %} class="active" {% endif %}><a href="?page={{i}}">{{i}}</a></li>
+                {% endfor %}
+                {% if page_obj.has_next %}
+                  <li><a href="?page={{ page_obj.next_page_number }}">></a></li>
+                  <li><a href="?page={{ page_obj.paginator.num_pages }}">>></a></li>
+                {% endif %}
+              </ul>
+            {% endif %}
+                             
+                          </div>
+
+                      </section>
+                  </div>
+              </div>
+	
+
+{% endblock main %}
+
+{% block js %}
+
+
+<script src="{% static "js/clientes.js" %}"></script>
+
+{% endblock js %}

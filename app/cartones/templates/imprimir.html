@@ -1,0 +1,394 @@
+{% load staticfiles %}
+{% load thumbnail %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Imprimir</title>
+	<link rel="stylesheet" href="{% static "css/imprimir.css" %}">
+
+<style type="text/css" media="print">
+@page{
+   margin: 2px;
+   -moz-print-color-adjust: exact;
+}
+</style>	
+</head>
+<body>
+
+	
+	
+	<section class="wrap">
+		{% for carton in  obj%}
+
+			<label for="">Carton {{carton.pk}} Fecha: {{carton.propietario.fecha}} Partida: {{carton.propietario.partida.id}}</label>
+			<article class="carton">
+				<div class="numero">
+					<span>
+						{% if carton.carton.l1_1 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_1}}
+						{% endif %}					
+					</span>
+				</div>
+
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l1_2 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_2}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l1_3 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_3}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l1_4 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_4}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l1_5 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_5}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l1_6 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_6}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l1_7 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_7}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l1_8 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_8}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l1_9 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_9}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l2_1 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_1}}
+						{% endif %}					
+					</span>
+				</div>
+
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l2_2 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_2}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l2_3 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_3}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l2_4 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_4}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l2_5 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_5}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l2_6 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_6}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l2_7 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_7}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l2_8 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_8}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l2_9 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_9}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l3_1 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_1}}
+						{% endif %}					
+					</span>
+				</div>
+
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l3_2 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_2}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l3_3 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_3}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l3_4 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_4}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l3_5 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_5}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l3_6 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_6}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l3_7 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_7}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l3_8 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_8}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero">
+					<span>
+						{% if carton.carton.l3_9 == '0' %}
+                                {% thumbnail user.userprofile.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_9}}
+						{% endif %}					
+					</span>
+				</div>
+			</article>
+			<span class="promo">P R O M O C I O N A L</span>
+		{% endfor %}
+
+	</section>
+
+	<script>
+
+	document.addEventListener("DOMContentLoaded", function(){
+	    window.print();
+    	window.close();
+	});
+
+	</script>
+</body>
+</html>

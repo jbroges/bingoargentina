@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block titulo %}
+Bingos Marvel | Salas
+{% endblock titulo %}
+
+{% block titulo_page %}
+	Salas
+{% endblock titulo_page %}
+
+
+{% block main %}
+
+	 <a class="btn btn-primary" href="/salas/crear/"><i class="fa fa-plus"></i> Nuevo</a><br><br>
+              <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              Listado de Salas
+                          </header>
+                          <div class="table-responsive">
+
+                            <table class="table  table-hover">
+                              <thead>
+                                <tr>
+                                  <th>ID</th>
+                                  <th>Nombre</th>
+                                  <th>Dirección</th>
+                                  <th>Activa</th>
+                                  <th>Acción</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              {% for sala in object_list%}
+                                <tr id="{{sala.pk}}_fila">
+                                  <td>{{sala.id}}</td>
+                                  <td>{{sala.nombre}}</td>
+                                  <td>{{sala.direccion}}</td>
+                                  <td><span id="estado{{sala.pk}}">{{sala.activa}}</span></td>
+                                  <td>
+	                           <div class="btn-group">
+	                                      <a class="btn btn-primary" href="/salas/editar/{{sala.id}}/"><i class="icon_pencil-edit"></i></a>
+	                          
+            {% if sala.activa in 'Si'%} 
+              <a class="btn btn-success" href="Javascript:EstadoSala({{sala.pk}},'{{csrf_token}}');void(0);" id="btnEdo" >
+            {% else %}
+              <a class="btn btn-success" href="Javascript:EstadoSala({{sala.pk}},'{{csrf_token}}');void(0);" id="btnEdo"  style="background:#333">
+            {% endif %}
+                                        
+
+    <!-- PARA ACTIVAR O DESACTIVAR SALA CAMBIOA COLOR SEGUN ESTADO -->
+                                       <i class="icon_check_alt2"></i></a>
+	                                      <a class="btn btn-danger" href="Javascript:BorrarSala({{sala.pk}},'{{csrf_token}}');void(0);"><i class="icon_close_alt2"></i></a>
+	                                  </div>
+                                  </td>
+                                </tr>
+                                {% endfor %}
+                              </tbody>
+                             </table>
+        {# .... **Now the pagination section** .... #}
+            &nbsp;&nbsp;
+            {% if is_paginated %}
+              <ul class="pagination">
+                {% if page_obj.has_previous %}
+                  <li><a href="?page=1"><<</a></li>
+                  <li><a href="?page={{ page_obj.previous_page_number }}"><</a></li>
+                {% endif %}
+                {% for i in paginator.page_range %}
+                  <li {% if page_obj.number == i %} class="active" {% endif %}><a href="?page={{i}}">{{i}}</a></li>
+                {% endfor %}
+                {% if page_obj.has_next %}
+                  <li><a href="?page={{ page_obj.next_page_number }}">></a></li>
+                  <li><a href="?page={{ page_obj.paginator.num_pages }}">>></a></li>
+                {% endif %}
+              </ul>
+            {% endif %}
+                             
+                          </div>
+
+                      </section>
+                  </div>
+              </div>
+	
+
+{% endblock main %}
+{% block js %}
+  
+</script>
+
+  
+<script src="{% static "js/salas.js" %}"></script>
+
+{% endblock js %}

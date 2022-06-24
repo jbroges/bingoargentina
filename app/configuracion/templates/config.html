@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block titulo %}
+	Bingos Marvel | Configuración
+{% endblock titulo %}
+
+{% block titulo_page %}
+	Configuración
+{% endblock titulo_page %}
+
+
+{% block main %}
+              <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                             Configuración
+                          </header>
+                          <div class="panel-body">
+                              <form class="form-horizontal " method="post" id="configform">
+                              {% csrf_token %}
+
+                              {{form.id}}
+                                  
+                                 <div class="form-group">
+                                  <div class="alert alert-danger alert-dismissable"style="display:none;width:98%;margin:auto" id="ErrortiempoMaster">
+                                      <strong>Error!</strong> 
+                                        <span>Indicates a successful or positive action.</span>  
+                                    </div>
+                                    <div id="ErrortiempoMasterBR" style="display:none"><br></div>
+                                    <!--Fin Error -->
+                                      <label class="col-sm-2 control-label">
+                                        {{form.tiempoMaster.label}}
+                                      </label>
+                                      <div class="col-sm-10">
+                                        {{form.tiempoMaster}}
+                                      </div>
+                                  </div>
+
+                       <div class="form-group">
+                          <div class="alert alert-danger alert-dismissable"style="display:none;width:98%;margin:auto" id="ErrortiempoInter">
+                            <strong>Error!</strong> 
+                            <span>Indicates a successful or positive action.</span>  
+                          </div>
+                          <div id="ErrortiempoInterBR" style="display:none"><br></div>
+                          <!--Fin Error -->
+                          <label class="col-sm-2 control-label">
+                            {{form.tiempoInter.label}}
+                          </label>
+                          <div class="col-sm-10">
+                            {{form.tiempoInter}}
+                          </div>
+                        </div>
+
+
+               
+                       <div class="form-group">
+                          <div class="alert alert-danger alert-dismissable"style="display:none;width:98%;margin:auto" id="ErrorTipo">
+                            <strong>Error!</strong> 
+                            <span>Indicates a successful or positive action.</span>  
+                          </div>
+                          <div id="ErrorTipoInterBR" style="display:none"><br></div>
+                          <!--Fin Error -->
+                          <label class="col-sm-2 control-label">
+                            Tipo Partida
+                          </label>
+                          <div class="col-sm-10">
+                            {{form.tipopartida}}
+                          </div>
+                        </div>
+
+                       <div class="form-group">
+                          <div class="alert alert-danger alert-dismissable"style="display:none;width:98%;margin:auto" id="ErrorTipo">
+                            <strong>Error!</strong> 
+                            <span>Indicates a successful or positive action.</span>  
+                          </div>
+                          <div id="ErrorTipoInterBR" style="display:none"><br></div>
+                          <!--Fin Error -->
+                          <label class="col-sm-2 control-label">
+                            Tipo Tablero
+                          </label>
+                          <div class="col-sm-10">
+                            {{form.theme}}
+                          </div>
+                        </div>
+
+
+                      <div class="form-group">
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <button type="button" class="btn btn-primary" onclick="Javascript:location.href='/partida/'; void(0);">Cancelar</button>
+                          <button type="submit" class="btn btn-success">Guardar</button>
+                        </div>
+                      </div>
+
+
+                  </form>
+                          </div>
+                      </section>	
+  				</div>
+  			</div>
+	
+
+{% endblock main %}
+
+
+{% block js %}
+  
+
+
+<script>
+$('#id_fecha').datepicker();
+
+$( document ).ready(function() {
+    $('#id_fecha').val(convertDateFormat($('#id_fecha').val()));
+});
+
+
+function convertDateFormat(string) {
+  var info = string.split('-');
+  return info[1] + '/' + info[2] + '/' + info[0];
+}
+</script>
+
+
+
+<script src="{% static "js/config.js" %}"></script>
+
+{% endblock js %}

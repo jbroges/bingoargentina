@@ -1,0 +1,754 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block titulo %}
+	Bingos Marvel | Ganadores
+{% endblock titulo %}
+
+{% block css %}
+	<link rel="stylesheet" href="{% static "css/imprimir.css" %}">
+	<style>
+		body{
+			width: 100%;
+		}
+		.wrap{
+			margin: auto;
+		}
+
+		.carton{
+			transform: scale(1.8);
+			margin-top: 65px;
+			margin-bottom: 90px;
+			overflow: hidden;
+		}
+	</style>
+{% endblock css %}
+
+{% block titulo_page %}
+	Ganadores
+{% endblock titulo_page %}
+
+
+{% block main %}
+<div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              Carton a Buscar
+                          </header>
+                          <div class="panel-body">
+                              <form class="form-inline" role="form" id="buscar" method="GET" action="/carton/ganador/">
+                                  <div class="form-group">
+                                      <label class="sr-only">
+                                      Carton a Buscar
+                                      </label>
+                                      <input class="form-control" id="carton" placeholder="ID Carton"  onKeyPress="return soloNumeros(event)">
+                                  </div>
+                                  <button type="submit" class="btn btn-primary">Buscar</button>
+                              </form>
+
+                          </div>
+                      </section>
+
+                  </div>
+              </div>
+
+{% if mensaje in 'NoGanador' %}
+	<h2>Carton <strong>NO EXISTE</strong></h2>
+{% else %}
+<h2>{{mensaje}}<strong> Nº {{partida}}</strong></h2>
+
+	
+
+	<section class="wrap" style="width:600px">
+		{% for carton in  obj%}
+				<h3>Figuras Ganadoras:</h3>
+			{% if carton.ganador_8 %}
+				<strong> Linea al Azar -</strong>	
+			{%endif%}	
+		
+			{% if carton.ganador_1 %}
+				<strong> 1era Linea -</strong>	
+			{%endif%}	
+
+			{% if carton.ganador_2 %}
+				<strong> 1era y 2da Linea -</strong>
+			{%endif%}	
+
+			{% if carton.ganador_3 %}
+				<strong> 1era y 3era Linea -</strong>
+			{%endif%}	
+
+			{% if carton.ganador_4 %}
+				<strong> 2da Linea -</strong>
+			{%endif%}	
+		
+			{% if carton.ganador_5 %}
+				<strong> 2da y 3era Linea -</strong>
+			{%endif%}	
+		
+			{% if carton.ganador_6 %}
+				<strong> 3era Linea -</strong>
+			{%endif%}	
+		
+			{% if carton.ganador_7 %}
+				<strong> Bingo -</strong>
+			{%endif%}	
+		
+			{% if carton.ganador_9 %}
+				<strong> Revancha -</strong>
+			{%endif%}	
+
+			{% if carton.ganador_10 %}
+				<strong> Rebingo -</strong>
+			{%endif%}	
+			<br>
+			<label for="" style="font-size:1em; font-weight:normal;"><strong>CARTON</strong> {{carton.pk}} <strong>FECHA</strong>: {{carton.propietario.fecha}} <strong>SALA</strong>: {{carton.propietario.sala.nombre}}</label>
+			<article class="carton">
+			
+				<div class="numero"
+					{% if carton.carton.l1_1  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l1_1 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_1}}
+						{% endif %}					
+					</span>
+				</div>
+
+
+				<div class="numero"
+					{% if carton.carton.l1_2  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l1_2 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_2}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l1_3  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l1_3 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_3}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l1_4  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l1_4 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_4}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l1_5  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l1_5 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_5}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l1_6  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l1_6 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_6}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l1_7  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l1_7 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_7}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l1_8  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l1_8 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_8}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l1_9  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l1_9 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_9}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l2_1  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l2_1 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_1}}
+						{% endif %}					
+					</span>
+				</div>
+
+
+				<div class="numero"
+					{% if carton.carton.l2_2  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l2_2 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_2}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l2_3  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l2_3 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_3}}
+						{% endif %}					
+					</span>
+				</div>
+				
+				<div class="numero"
+					{% if carton.carton.l2_4  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l2_4 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_4}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l2_5  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l2_5 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_5}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l2_6  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l2_6 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_6}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l2_7  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l2_7 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_7}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l2_8  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l2_8 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_8}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l2_9  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l2_9 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_9}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l3_1  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l3_1 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_1}}
+						{% endif %}					
+					</span>
+				</div>
+
+
+				<div class="numero"
+					{% if carton.carton.l3_2  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l3_2 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_2}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l3_3  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l3_3 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_3}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l3_4  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l3_4 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_4}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l3_5  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l3_5 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_5}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l3_6  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l3_6 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_6}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l3_7  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l3_7 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_7}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l3_8  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l3_8 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_8}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if carton.carton.l3_9  in balotasJugadas %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l3_9 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_9}}
+						{% endif %}					
+					</span>
+				</div>
+			</article>
+			<span class="promo">P R O M O C I O N A L</span>
+		{% endfor %}
+	</section>
+
+	{%if user.is_superuser %}
+	{% for posible in obj%}
+		<br>Aprovables: 	
+			{% if posible.posible_8 %}
+				<button class="btn btn-primary" onclick="Marcar({{posible.id}},'LA')">LA</button>
+			{% endif %}
+			
+			{% if posible.posible_1 %}
+				<button class="btn btn-primary" onclick="Marcar({{posible.id}},'L1')">L1</button>
+			{% endif %} 
+
+			{% if posible.posible_4 %}
+				<button class="btn btn-primary" onclick="Marcar({{posible.id}},'L2')">L2</button>
+			{% endif %}
+
+			{% if posible.posible_6 %}
+				<button class="btn btn-primary" onclick="Marcar({{posible.id}},'L3')">L3</button>
+			{% endif %}
+
+			{% if posible.posible_2 %}
+				<button class="btn btn-primary" onclick="Marcar({{posible.id}},'L1-L2')">L1-L2</button>
+			{% endif %}
+
+			{% if posible.posible_3 %}
+				<button class="btn btn-primary" onclick="Marcar({{posible.id}},'L1-L3')">L1-L3</button>
+			{% endif %}
+
+			{% if posible.posible_5 %}
+				<button class="btn btn-primary" onclick="Marcar({{posible.id}},'L2-L3')">L2-L3</button>
+			{% endif %}
+
+			{% if posible.posible_7 %}
+				<button class="btn btn-primary" onclick="Marcar({{posible.id}},'casa')">Bingo</button>
+			{% endif %}
+
+			{% if posible.posible_9 %}
+				<button class="btn btn-primary" onclick="Marcar({{posible.id}},'rebingo')">Rebingo</button>
+			{% endif %}
+
+			{% if posible.posible_10 %}
+				<button class="btn btn-primary" onclick="Marcar({{posible.id}},'revancha')">Revancha</button>
+			{% endif %}
+
+				<button class="btn btn-primary" onclick="Mostrar({{posible.id}})">Mostrar</button>
+
+	{%endfor%}
+	{%endif%}
+{% endif %}
+
+{% endblock main %}
+
+{% block js %}
+
+
+
+	<script>
+	$( "#buscar" ).submit(function( event ) {
+
+		location.href="/carton/ganador/?carton=" + $('#carton').val();
+		return false; 
+	});
+	</script>
+
+	<script type="text/javascript">
+// Solo permite ingresar numeros.
+function soloNumeros(evt){
+    evt = (evt) ? evt : window.event
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        status = "This field accepts numbers only."
+        return false
+    }
+    status = ""
+    return true}
+
+
+//Marca Ganador por id manualmente
+function Marcar(id,figura){
+				
+	$.get('/partida/marcar-carton/',{id:id, figura:figura})
+	.done(function(data){
+		if(data =='fue'){
+			alert('Este carton no esta en Juego');
+			return false;
+		}
+		mostrar.child('_mostrarGanador').update({figura:figura,id:id});
+		if(data =='ok'){
+			if(figura=='casa')
+				figura='Bingo'
+			alert('Carton Marcado Como Ganador de ' + figura);
+		}
+	});
+
+}
+
+//Mostrar no Ganador por id manualmente
+function Mostrar(id){
+
+		mostrar.child('_mostrarGanador').update({figura:'NoGanador',id:id});
+		alert('Mostrando Carton');
+}
+
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+ 	apiKey: "AIzaSyAywPCL52PPdP5md4jIdsgSEwkGb70zC08",
+    authDomain: "bingo-testing.firebaseapp.com",
+    databaseURL: "https://bingo-testing.firebaseio.com",
+    projectId: "bingo-testing",
+    storageBucket: "bingo-testing.appspot.com",
+    messagingSenderId: "19217983797"
+  };
+  firebase.initializeApp(config);
+
+    var database = firebase.database();
+
+    // Fijarse que la ruta de partida ahora es la colección productos:
+    var mostrar = database.ref("mostrar");
+
+	mostrar.child('_mostrarGanador').update({figura:'none',id:0});
+</script>
+{% endblock js %}

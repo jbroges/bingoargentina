@@ -1,0 +1,33 @@
+{% load staticfiles %}
+{% load thumbnail %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Bingos En Linea</title>
+
+	<link rel="stylesheet" href="{% static "css/tablero.css" %}">
+
+</head>
+<body>
+
+<center>
+	{% thumbnail user.userprofile.sala.thumb "200x200" crop="center" as im %}
+    	<a href="/"><img src="{{ im.url }}" style="border-radius:50%"></a>
+    {% endthumbnail %} 
+    <h1>LA PARTIDA TERMINO</h1>
+
+</center>
+
+<center>
+	{% if user.is_superuser %}
+		<button id="crear" onclick="javascript:window.close();void(0);">CERRAR</button>	
+	{% else %}
+		<button id="crear" onclick="javascript:location.reload();void(0);">CARGAR</button>
+{% endif %}
+</center>
+
+
+
+</body>
+</html>

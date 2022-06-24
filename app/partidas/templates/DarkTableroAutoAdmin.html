@@ -1,0 +1,495 @@
+{% load staticfiles %}
+{% load thumbnail %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Bingo En Linea - Administracion</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+
+	<link rel="stylesheet" href="{% static "css/Darktablero.css" %}">
+ 
+    
+    <link href="{% static "css/chat.css" %}" rel="stylesheet">
+
+
+</head>
+<body>
+
+	<section class="ganador" id="ganador" style="text-align:center;">
+		<h2 style="text-align:center;" id="textoGanador"></h2>
+
+<section class="escogida">
+	<article class="ganadora" id="balotadecanto">00</article>
+</section>
+<br>
+		{% if user.is_superuser  %}
+			<a href="Javascript:cerrar();void(0);" style="background:green;color:#FFFFFF;padding:5px 10px;text-decoration:none;">Cerrar</a>	
+		{% endif %}
+	</section>
+	
+	<!--HEADER DEL TABLERO-->
+	<section class="header">
+		<article class="logo">
+        	{% thumbnail user.userprofile.sala.thumb "50x50" crop="center" as im %}
+        		<a href="/"><img src="{{ im.url }}" style="border-radius:50%"></a>
+        	{% endthumbnail %} 
+		</article>
+		<article class="sala">
+        	<h1>{{user.userprofile.sala.nombre}}</h1>
+        </article>
+        <article class="datos">
+        	<ul>
+        		<li>Partida Nª: <span id="partidaNum">{{partidanum}}</span></li>
+        		<li>Cartones en Sala: <span id="catonesSala">{{cartonensala}}</span></li>
+        		<li>Cartones Vendidos: <span id="cartoneVendidos">{{cartonvendidos}}</span></li>
+        		<li>Nº de Balotas Jugadas: <span id="balotasJugadas">{{balotasJugadas}}</span></li>
+        	</ul>
+        </article>
+	</section>	
+<section class="wrap-left" id="wrap-left">
+	<h3 style="text-align:center;">Jugando: <span id="tituloFigua">En Espera...</span> </h3>
+
+	<!--TABLERO-->
+	<section class="tablero">
+		<article class="numero" id="n1">01</article>
+		<article class="numero" id="n2">02</article>
+		<article class="numero" id="n3">03</article>
+		<article class="numero" id="n4">04</article>
+		<article class="numero" id="n5">05</article>
+		<article class="numero" id="n6">06</article>
+		<article class="numero" id="n7">07</article>
+		<article class="numero" id="n8">08</article>
+		<article class="numero" id="n9">09</article>
+		<article class="numero" id="n10">10</article>
+	</section>
+
+	<section class="tablero">
+		<article class="numero" id="n11">11</article>
+		<article class="numero" id="n12">12</article>
+		<article class="numero" id="n13">13</article>
+		<article class="numero" id="n14">14</article>
+		<article class="numero" id="n15">15</article>
+		<article class="numero" id="n16">16</article>
+		<article class="numero" id="n17">17</article>
+		<article class="numero" id="n18">18</article>
+		<article class="numero" id="n19">19</article>
+		<article class="numero" id="n20">20</article>
+	</section>
+
+	<section class="tablero">
+		<article class="numero" id="n21">21</article>
+		<article class="numero" id="n22">22</article>
+		<article class="numero" id="n23">23</article>
+		<article class="numero" id="n24">24</article>
+		<article class="numero" id="n25">25</article>
+		<article class="numero" id="n26">26</article>
+		<article class="numero" id="n27">27</article>
+		<article class="numero" id="n28">28</article>
+		<article class="numero" id="n29">29</article>
+		<article class="numero" id="n30">30</article>
+	</section>
+
+	<section class="tablero">
+		<article class="numero" id="n31">31</article>
+		<article class="numero" id="n32">32</article>
+		<article class="numero" id="n33">33</article>
+		<article class="numero" id="n34">34</article>
+		<article class="numero" id="n35">35</article>
+		<article class="numero" id="n36">36</article>
+		<article class="numero" id="n37">37</article>
+		<article class="numero" id="n38">38</article>
+		<article class="numero" id="n39">39</article>
+		<article class="numero" id="n40">40</article>
+	</section>
+
+
+	<section class="tablero">
+		<article class="numero" id="n41">41</article>
+		<article class="numero" id="n42">42</article>
+		<article class="numero" id="n43">43</article>
+		<article class="numero" id="n44">44</article>
+		<article class="numero" id="n45">45</article>
+		<article class="numero" id="n46">46</article>
+		<article class="numero" id="n47">47</article>
+		<article class="numero" id="n48">48</article>
+		<article class="numero" id="n49">49</article>
+		<article class="numero" id="n50">50</article>
+	</section>
+
+	<section class="tablero">
+		<article class="numero" id="n51">51</article>
+		<article class="numero" id="n52">52</article>
+		<article class="numero" id="n53">53</article>
+		<article class="numero" id="n54">54</article>
+		<article class="numero" id="n55">55</article>
+		<article class="numero" id="n56">56</article>
+		<article class="numero" id="n57">57</article>
+		<article class="numero" id="n58">58</article>
+		<article class="numero" id="n59">59</article>
+		<article class="numero" id="n60">60</article>
+	</section>
+
+	<section class="tablero">
+		<article class="numero" id="n61">61</article>
+		<article class="numero" id="n62">62</article>
+		<article class="numero" id="n63">63</article>
+		<article class="numero" id="n64">64</article>
+		<article class="numero" id="n65">65</article>
+		<article class="numero" id="n66">66</article>
+		<article class="numero" id="n67">67</article>
+		<article class="numero" id="n68">68</article>
+		<article class="numero" id="n69">69</article>
+		<article class="numero" id="n70">70</article>
+	</section>
+
+	<section class="tablero">
+		<article class="numero" id="n71">71</article>
+		<article class="numero" id="n72">72</article>
+		<article class="numero" id="n73">73</article>
+		<article class="numero" id="n74">74</article>
+		<article class="numero" id="n75">75</article>
+		<article class="numero" id="n76">76</article>
+		<article class="numero" id="n77">77</article>
+		<article class="numero" id="n78">78</article>
+		<article class="numero" id="n79">79</article>
+		<article class="numero" id="n80">80</article>
+	</section>
+
+	<section class="tablero">
+		<article class="numero" id="n81">81</article>
+		<article class="numero" id="n82">82</article>
+		<article class="numero" id="n83">83</article>
+		<article class="numero" id="n84">84</article>
+		<article class="numero" id="n85">85</article>
+		<article class="numero" id="n86">86</article>
+		<article class="numero" id="n87">87</article>
+		<article class="numero" id="n88">88</article>
+		<article class="numero" id="n89">89</article>
+		<article class="numero" id="n90">90</article>
+	</section>
+</section>
+
+<section class="wrap-right" id="wrap-right">
+
+	<section class="escogida">
+		<img src="/static/balotas/b00.png" alt="" id="balotaE">
+	</section>
+	<br>
+
+	<div class="transparente">
+		<div style=";font-size:1.3em;text-align:center;color:#fff">ULTIMAS 5 BALOTAS JUGADAS</div>
+
+		<div id="ultimas5" class="ultimas5">
+		{% for ultima in ultimas5%}
+				<img src="/static/balotas/b{{ultima.balota}}.png" width="100px" style="float:right"></img>
+		{%endfor%}
+		</div>
+
+		<div style="margin-top:30px;text-align:center">
+			<button id="play" disabled="disabled">PLAY</button>	
+			<button id="pausar">PAUSAR</button>
+			<button id="refresh">RELOAD</button>
+		</div>
+	</div>
+</section>
+
+<div id="grande">
+	<img src="{% static "balotas/b00.png" %}" id="grandeBalota" width="200px" alt="">
+</div>
+
+<div class="chat"></div>
+
+<script src="{% static "js/jquery.js" %}"></script>
+
+
+
+
+<audio id="audio" src = "" type="audio/ogg" >
+</audio>
+
+<audio id="audio1" src = "" type="audio/ogg" >
+</audio>
+
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script>
+
+    
+
+
+  // Initialize Firebase
+  var config = {
+	apiKey: "AIzaSyAywPCL52PPdP5md4jIdsgSEwkGb70zC08",
+    authDomain: "bingo-testing.firebaseapp.com",
+    databaseURL: "https://bingo-testing.firebaseio.com",
+    projectId: "bingo-testing",
+    storageBucket: "bingo-testing.appspot.com",
+    messagingSenderId: "19217983797"
+  };
+  firebase.initializeApp(config);
+
+    var database = firebase.database();
+
+    // Fijarse que la ruta de partida ahora es la colección productos:
+    var referencia=database.ref("balota");
+    var seteos=database.ref("seteos");
+    var chat = database.ref("chat");    
+	var Sigue = true;
+   	var quienGana = 'none'
+	var terminoReload = false;
+
+  
+	seteos.child('-Kib_9Z3JasVVOykH19m').update({cerrar:'none',mensaje:'none', refresh:'none'});
+
+  //   var balota = {'balota':'1','ganador':'no','mjsGanador':'none'};
+  //   var sete = {'refresh':'none','mensaje':'none','cerrar':'none'};  // // Get a key for a new Post.
+  // var newPostKey = firebase.database().ref().child('seteos').push().key;
+
+  // // Write the new post's data simultaneously in the posts list and the user's post list.
+  // var updates = {};
+  // updates['/seteos/' + newPostKey] = sete;
+
+  //  firebase.database().ref().update(updates);
+   //referencia.push(balota);
+  $(document).ready(function() {
+        $('.chat').load('/chat/en-linea/');
+      });
+
+
+ referencia.on('child_changed', function(data) {
+ 		a=data.val();
+		quienGana = a.mjsGanador;
+
+		document.getElementById('balotasJugadas').innerHTML = a.numBalotas;
+
+		document.getElementById('n'+a.balota).style.color = "white";	
+
+		document.getElementById('balotaE').src = "/static/balotas/b" + a.balota + '.png';
+		
+		document.getElementById('grandeBalota').src = "/static/balotas/b" + a.balota + '.png';
+
+		document.getElementById('audio').src = "/static/sound/NUM" + a.balota + ".ogg";
+		document.getElementById('audio').load();
+
+		$.get("/partida/ultimas5/", function(data, status){
+			document.getElementById('ultimas5').innerHTML = data;
+		});
+
+		if(a.ganador=='si'){
+			Sigue = false;
+			document.getElementById('ganador').style.display = 'block';
+			document.getElementById('balotadecanto').innerHTML = a.balota;
+
+			if(quienGana == 'cartonGanadorL1'){
+				document.getElementById('textoGanador').innerHTML="Hay Figura Ganadora: 1era LINEA";
+			}else if(quienGana == 'cartonGanadorL2'){
+				document.getElementById('textoGanador').innerHTML="Hay Figura Ganadora: 2da LINEA";
+			}else if(quienGana == 'cartonGanadorL3'){
+				document.getElementById('textoGanador').innerHTML="Hay Figura Ganadora: 3ra LINEA";
+			}else if(quienGana == 'cartonGanadorL1L2'){
+				document.getElementById('textoGanador').innerHTML="Hay Figura Ganadora: 1ra y 2da LINEA";
+			}else if(quienGana == 'cartonGanadorL1L3'){
+				document.getElementById('textoGanador').innerHTML="Hay Figura Ganadora: 1ra y 3era LINEA";
+			}else if(quienGana == 'cartonGanadorL2L3'){
+				document.getElementById('textoGanador').innerHTML="Hay Figura Ganadora: 2da y 3era LINEA";
+			}else if(quienGana == 'cartonGanadorLL'){
+				document.getElementById('textoGanador').innerHTML="Hay Figura Ganadora: Casa Llena";
+			}else if(quienGana == 'cartonGanadorRB'){
+				document.getElementById('textoGanador').innerHTML="Hay Figura Ganadora: ReBingo";
+			}else if(quienGana == 'cartonGanadorRV'){
+				document.getElementById('textoGanador').innerHTML="Hay Figura Ganadora: Revancha";
+			}
+
+			//TITULO DE LA JUGADA
+			if(a.tituloFigua!='none')
+				document.getElementById('tituloFigua').innerHTML = a.tituloFigua;
+			
+			//document.getElementById('textoGanador').innerHTML=a.mjsGanador;
+
+		}
+ });
+
+
+seteos.on('child_changed', function(data) {
+	b=data.val();
+
+	if(b.cerrar=='si'){
+		document.getElementById('ganador').style.display = 'none'
+	}
+
+	if(b.refresh=='si'){
+		location.reload();
+		return false;
+	}
+
+	if(b.mensaje=='termino'){
+		
+		document.getElementById('ganador').style.display = 'block';
+		document.getElementById('balotadecanto').style.display='none';
+		document.getElementById('textoGanador').innerHTML="FIN DE LA PARTIDA";
+	}
+	seteos.child('-Kib_9Z3JasVVOykH19m').update({cerrar:'none',mensaje:'none', refresh:'none'});
+});
+document.oncontextmenu = function(){return false;}
+
+
+</script>
+
+<script>
+
+
+	{% for n in numeros  %}
+		document.getElementById('n{{n.balota}}').style.color = "white";	
+		//document.getElementById('n{{n.balota}}').style.background = "green";	
+	{% endfor %}
+
+
+	//SI ES SUPER USER PUEDE DARLE PLAY
+	{% if user.is_superuser  %}
+	document.getElementById("refresh").addEventListener("click", function(){
+		seteos.child('-Kib_9Z3JasVVOykH19m').update({cerrar:'none',mensaje:'none', refresh:'si'});
+	});	
+	document.getElementById("pausar").addEventListener("click", function(){
+		pausar();
+	});
+	document.getElementById("play").addEventListener("click", function(){
+		document.getElementById("play").disabled  = true;
+		$.get("/partida/jugar/", function(data, status){
+			Sigue=true;
+			if(data.ganador=='termino'){
+
+				seteos.child('-Kib_9Z3JasVVOykH19m').update({cerrar:'none',mensaje:'termino', refresh:'none'});
+
+				terminoReload = true;
+				return false;
+			}
+
+			msj = 'none';
+			hayganador = 'no';
+
+			if (data.ganador == "cartonGanadorL1"){
+				msj='cartonGanadorL1';
+				hayganador='si';
+			}else if(data.ganador == "cartonGanadorL2"){
+				msj='cartonGanadorL2';
+				hayganador='si';
+			}else if(data.ganador == "cartonGanadorL3"){
+				msj='cartonGanadorL3';
+				hayganador='si';
+			}else if(data.ganador == "cartonGanadorL1L2"){
+				msj='cartonGanadorL1L2';
+				hayganador='si';
+			}else if(data.ganador == "cartonGanadorL1L3"){
+				msj='cartonGanadorL1L3';
+				hayganador='si';
+			}else if(data.ganador == "cartonGanadorL2L3"){
+				msj='cartonGanadorL2L3';
+				hayganador='si';
+			}else if(data.ganador == "cartonGanadorLL"){
+				msj='cartonGanadorLL';
+				hayganador='si';
+			}else if(data.ganador == "cartonGanadorRB"){
+				msj='cartonGanadorRB';
+				hayganador='si';
+			}else if(data.ganador == "cartonGanadorRV"){
+				msj='cartonGanadorRV';
+				hayganador='si';
+			}
+			
+			
+			referencia.child('-Kiaoxi44jlITaqNiDMb').update({balota:data.balota,ganador:hayganador, mjsGanador:msj,numBalotas:data.balotasJugadas + 1});
+
+		 $.get( "/chat/escribir/?msj=Ha Salido la Balota Nº " + data.balota , function( data ) {
+
+				
+					chatenLinea.child('{{user.userprofile.sala}}_' + Date.now()).update({msjchat:data.mensaje,usuarioR:data.receptor, usuarioE:'Sistemas',time:data.time,foto:data.thumb,sala:data.sala});
+		 	});
+
+   	});
+	});
+	{% endif %}
+
+
+//CARGA EL PLAY DEL AUDIO SI ES SUPER MUESTRA PARA EL CLICK Y TEMPORISADOR TAMBIEN SUENA EL AUDIO GANADOR
+document.getElementById("audio").addEventListener('loadeddata',function() {
+		document.getElementById('audio').play();
+		$('#grande').fadeIn('slow');
+	    $("#grande").fadeOut({{intermedio}});
+
+		if(quienGana == 'cartonGanadorLL' || quienGana == 'cartonGanadorRB' || quienGana == 'cartonGanadorRV'){
+			
+			setTimeout(function(){
+				document.getElementById('audio1').src = "/static/sound/CBINGO.ogg";
+				document.getElementById('audio1').play();
+				quienGana = 'none';				
+			},{{primario}});
+
+		}else if(quienGana != 'none' ){
+			
+			setTimeout(function(){
+				document.getElementById('audio1').src = "/static/sound/CLINEA.ogg";
+				document.getElementById('audio1').play();
+				quienGana = 'none';				
+			},{{primario}});
+		}
+
+		
+		{% if  user.is_superuser %}
+			if(!Sigue){
+				document.getElementById("play").disabled  = false;
+
+			return false;
+
+			}
+
+			setTimeout(function(){
+				document.getElementById("play").disabled  = false;
+				if(Sigue) document.getElementById("play").click();
+			},{{primario}});
+
+
+		{% endif %}
+
+
+
+
+	}
+);
+
+
+//funcion para cerrar el cuadro de mensaje del medio
+function cerrar(){
+	Sigue = false;
+	var ref;
+	if(terminoReload){
+		ref = 'si';
+	}else {
+		ref = 'no';
+	}
+	seteos.child('-Kib_9Z3JasVVOykH19m').update({cerrar:'si',mensaje:'none', refresh:ref});
+}
+
+
+function pausar(){
+	Sigue = false;
+	document.getElementById("play").disabled  = false;
+	return false;
+}
+
+
+
+// A $( document ).ready() block.
+$( document ).ready(function() {
+	 document.getElementById("wrap-right").style.height =document.getElementById("wrap-left").offsetHeight + "px";
+	
+	 setTimeout(function(){
+	   document.getElementById("play").disabled  = false;
+	 }, 10000);
+});
+
+</script>
+
+
+</body>
+</html>

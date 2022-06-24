@@ -1,0 +1,77 @@
+@import 'nib'
+@import 'nib/vendor'
+@import 'nib/gradients'
+
+vendor_prefixes = o ms webkit moz
+@font-face
+	font-family Avian
+	font-style normal
+	src url(../fonts/Avian.ttf)
+
+
+@font-face
+	font-family SheepingDogs
+	font-style normal
+	src url(../fonts/SheepingDogs.ttf)
+
+
+media_queries = {
+	mobile  : "only screen and (max-width: 600px)",
+	tablet  : "only screen and (min-width: 601px) and (max-width: 800px)",
+	desktop : "only screen and (min-width: 801px)"
+}
+
+for_breakpoint(breakpoints)
+	conditions = ()
+	for breakpoint in breakpoints
+		push(conditions, media_queries[breakpoint])
+	conditions = join(", ", conditions)
+	@media conditions
+	{block}
+
+.chat
+	background #fff
+	border 1px solid #333
+	width 500px
+	overflow hidden
+	position fixed
+	box-sizing border-box
+	bottom 10px
+	right 10px
+	z-index 100000
+	transition 1s
+
+	.chatitle
+		color #fff
+		width 100%
+		height 30px
+		background #00A654
+		padding 3px
+		span
+			float right
+			font-size 2em
+			margin-top -15px		
+			cursor pointer
+			margin-right 5px
+	.mensajes	
+		width 100%		
+		height 500px
+		display none
+		padding 9px
+		.leidos
+			overflow-y scroll
+			padding 3px
+
+.mjs
+	background #eee
+	padding 5px
+	overflow hidden
+	border-radius 5px
+	margin-bottom 5px
+	.foto
+		float left
+	.usuario
+		margin-left 5px
+		float left
+	.letras
+		display block

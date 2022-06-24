@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block titulo %}
+	Bingos Marvel | Reporte por Salas
+{% endblock titulo %}
+
+{% block titulo_page %}
+	Reporte por Partida
+{% endblock titulo_page %}
+
+
+{% block main %}
+              <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                             Reporte por Partida
+                          </header>
+                          <div class="panel-body">
+                              <form class="form-horizontal " method="POST" action="/reportes/partida/" id="reportSala" target="_blank">
+                              {%csrf_token%}
+                                  <div class="form-group">
+                                    <!--Error -->
+                                    <div class="alert alert-danger alert-dismissable"style="display:none;width:98%;margin:auto" id="ErrorDesde">
+                                      <strong>Error!</strong> 
+                                        <span>Indicates a successful or positive action.</span>  
+                                    </div>
+                                    <div id="ErrorDesdeBR" style="display:none"><br></div>
+                                    <!--Fin Error -->
+                                      <label class="col-sm-2 control-label">
+                                        Id Partida
+                                      </label>
+                                      <div class="col-sm-10">
+        <input class="form-control round-input" id="id" name="id" placeholder="Id Carton" type="text">
+                                      </div>
+                                  </div>
+
+              
+
+                      <div class="form-group">
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <button type="button" class="btn btn-primary" onclick="Javascript:location.href='/carton/asignacion/'; void(0);">Cancelar</button>
+                          <button type="submit" class="btn btn-success">Generar</button>
+                        </div>
+                      </div>
+
+
+                  </form>
+                          </div>
+                      </section>	
+  				</div>
+  			</div>
+	
+{% endblock main %}
+
+
+{% block js %}
+  
+
+
+{% endblock js %}

@@ -1,0 +1,502 @@
+{% load staticfiles %}
+{% load thumbnail %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Bingo En Linea - Administracion - DARK</title>
+
+	<link rel="stylesheet" href="{% static "css/Darktablero.css" %}">
+	 <link rel="stylesheet" href="{% static "css/animate.css" %}">
+
+</head>
+<body>
+
+<section class="ganador" id="ganador" style="text-align:center;">
+		<h2 style="text-align:center;" id="textoGanador"></h2>
+
+<section class="escogida">
+	<article class="ganadora" id="balotadecanto">00</article>
+</section>
+<br>
+		{% if user.is_superuser  %}
+			<a href="Javascript:cerrar();void(0);" style="background:green;color:#FFFFFF;padding:5px 10px;text-decoration:none;">Cerrar</a>	
+		{% endif %}
+	</section>
+	
+	<!--HEADER DEL TABLERO-->
+	<section class="header">
+		<article class="logo">
+        	{% thumbnail user.userprofile.sala.thumb "50x50" crop="center" as im %}
+        		<a href="/"><img src="{{ im.url }}" style="border-radius:50%"></a>
+        	{% endthumbnail %} 
+		</article>
+		<article class="sala">
+        	<h1>{{user.userprofile.sala.nombre}}</h1>
+        </article>
+        <article class="datos">
+        	<ul>
+        		<li>Partida Nª: <span id="partidaNum">{{partidanum}}</span></li>
+        		<li>Cartones en Sala: <span id="catonesSala">{{cartonensala}}</span></li>
+        		<li>Cartones Vendidos: <span id="cartoneVendidos">{{cartonvendidos}}</span></li>
+        		<li>Balotas Jugadas: <span id="balotasJugadas">{{balotasJugadas}}</span></li>
+        	</ul>
+        </article>
+	</section>	
+<section class="wrap-left" id="wrap-left">
+	<h3 style="text-align:center;">Jugando: <span id="tituloFigua">En Espera...</span> </h3>
+
+	<!--TABLERO-->
+	<section class="tablero">
+		<article class="numero" onclick="seleccionar(1);" id="n1">01</article>
+		<article class="numero" onclick="seleccionar(2);" id="n2">02</article>
+		<article class="numero" onclick="seleccionar(3);" id="n3">03</article>
+		<article class="numero" onclick="seleccionar(4);" id="n4">04</article>
+		<article class="numero" onclick="seleccionar(5);" id="n5">05</article>
+		<article class="numero" onclick="seleccionar(6);" id="n6">06</article>
+		<article class="numero" onclick="seleccionar(7);" id="n7">07</article>
+		<article class="numero" onclick="seleccionar(8);" id="n8">08</article>
+		<article class="numero" onclick="seleccionar(9);" id="n9">09</article>
+		<article class="numero" onclick="seleccionar(10);" id="n10">10</article>
+	</section>
+
+	<section class="tablero">
+		<article class="numero" onclick="seleccionar(11);" id="n11">11</article>
+		<article class="numero" onclick="seleccionar(12);" id="n12">12</article>
+		<article class="numero" onclick="seleccionar(13);" id="n13">13</article>
+		<article class="numero" onclick="seleccionar(14);" id="n14">14</article>
+		<article class="numero" onclick="seleccionar(15);" id="n15">15</article>
+		<article class="numero" onclick="seleccionar(16);" id="n16">16</article>
+		<article class="numero" onclick="seleccionar(17);" id="n17">17</article>
+		<article class="numero" onclick="seleccionar(18);" id="n18">18</article>
+		<article class="numero" onclick="seleccionar(19);" id="n19">19</article>
+		<article class="numero" onclick="seleccionar(20);" id="n20">20</article>
+	</section>
+
+	<section class="tablero">
+		<article class="numero" onclick="seleccionar(21);" id="n21">21</article>
+		<article class="numero" onclick="seleccionar(22);" id="n22">22</article>
+		<article class="numero" onclick="seleccionar(23);" id="n23">23</article>
+		<article class="numero" onclick="seleccionar(24);" id="n24">24</article>
+		<article class="numero" onclick="seleccionar(25);" id="n25">25</article>
+		<article class="numero" onclick="seleccionar(26);" id="n26">26</article>
+		<article class="numero" onclick="seleccionar(27);" id="n27">27</article>
+		<article class="numero" onclick="seleccionar(28);" id="n28">28</article>
+		<article class="numero" onclick="seleccionar(29);" id="n29">29</article>
+		<article class="numero" onclick="seleccionar(30);" id="n30">30</article>
+	</section>
+
+	<section class="tablero">
+		<article class="numero" onclick="seleccionar(31);" id="n31">31</article>
+		<article class="numero" onclick="seleccionar(32);" id="n32">32</article>
+		<article class="numero" onclick="seleccionar(33);" id="n33">33</article>
+		<article class="numero" onclick="seleccionar(34);" id="n34">34</article>
+		<article class="numero" onclick="seleccionar(35);" id="n35">35</article>
+		<article class="numero" onclick="seleccionar(36);" id="n36">36</article>
+		<article class="numero" onclick="seleccionar(37);" id="n37">37</article>
+		<article class="numero" onclick="seleccionar(38);" id="n38">38</article>
+		<article class="numero" onclick="seleccionar(39);" id="n39">39</article>
+		<article class="numero" onclick="seleccionar(40);" id="n40">40</article>
+	</section>
+
+
+	<section class="tablero">
+		<article class="numero" onclick="seleccionar(41);" id="n41">41</article>
+		<article class="numero" onclick="seleccionar(42);" id="n42">42</article>
+		<article class="numero" onclick="seleccionar(43);" id="n43">43</article>
+		<article class="numero" onclick="seleccionar(44);" id="n44">44</article>
+		<article class="numero" onclick="seleccionar(45);" id="n45">45</article>
+		<article class="numero" onclick="seleccionar(46);" id="n46">46</article>
+		<article class="numero" onclick="seleccionar(47);" id="n47">47</article>
+		<article class="numero" onclick="seleccionar(48);" id="n48">48</article>
+		<article class="numero" onclick="seleccionar(49);" id="n49">49</article>
+		<article class="numero" onclick="seleccionar(50);" id="n50">50</article>
+	</section>
+
+	<section class="tablero">
+		<article class="numero" onclick="seleccionar(51);" id="n51">51</article>
+		<article class="numero" onclick="seleccionar(52);" id="n52">52</article>
+		<article class="numero" onclick="seleccionar(53);" id="n53">53</article>
+		<article class="numero" onclick="seleccionar(54);" id="n54">54</article>
+		<article class="numero" onclick="seleccionar(55);" id="n55">55</article>
+		<article class="numero" onclick="seleccionar(56);" id="n56">56</article>
+		<article class="numero" onclick="seleccionar(57);" id="n57">57</article>
+		<article class="numero" onclick="seleccionar(58);" id="n58">58</article>
+		<article class="numero" onclick="seleccionar(59);" id="n59">59</article>
+		<article class="numero" onclick="seleccionar(60);" id="n60">60</article>
+	</section>
+
+	<section class="tablero">
+		<article class="numero" onclick="seleccionar(61);" id="n61">61</article>
+		<article class="numero" onclick="seleccionar(62);" id="n62">62</article>
+		<article class="numero" onclick="seleccionar(63);" id="n63">63</article>
+		<article class="numero" onclick="seleccionar(64);" id="n64">64</article>
+		<article class="numero" onclick="seleccionar(65);" id="n65">65</article>
+		<article class="numero" onclick="seleccionar(66);" id="n66">66</article>
+		<article class="numero" onclick="seleccionar(67);" id="n67">67</article>
+		<article class="numero" onclick="seleccionar(68);" id="n68">68</article>
+		<article class="numero" onclick="seleccionar(69);" id="n69">69</article>
+		<article class="numero" onclick="seleccionar(70);" id="n70">70</article>
+	</section>
+
+	<section class="tablero">
+		<article class="numero" onclick="seleccionar(71);" id="n71">71</article>
+		<article class="numero" onclick="seleccionar(72);" id="n72">72</article>
+		<article class="numero" onclick="seleccionar(73);" id="n73">73</article>
+		<article class="numero" onclick="seleccionar(74);" id="n74">74</article>
+		<article class="numero" onclick="seleccionar(75);" id="n75">75</article>
+		<article class="numero" onclick="seleccionar(76);" id="n76">76</article>
+		<article class="numero" onclick="seleccionar(77);" id="n77">77</article>
+		<article class="numero" onclick="seleccionar(78);" id="n78">78</article>
+		<article class="numero" onclick="seleccionar(79);" id="n79">79</article>
+		<article class="numero" onclick="seleccionar(80);" id="n80">80</article>
+	</section>
+
+	<section class="tablero">
+		<article class="numero" onclick="seleccionar(81);" id="n81">81</article>
+		<article class="numero" onclick="seleccionar(82);" id="n82">82</article>
+		<article class="numero" onclick="seleccionar(83);" id="n83">83</article>
+		<article class="numero" onclick="seleccionar(84);" id="n84">84</article>
+		<article class="numero" onclick="seleccionar(85);" id="n85">85</article>
+		<article class="numero" onclick="seleccionar(86);" id="n86">86</article>
+		<article class="numero" onclick="seleccionar(87);" id="n87">87</article>
+		<article class="numero" onclick="seleccionar(88);" id="n88">88</article>
+		<article class="numero" onclick="seleccionar(89);" id="n89">89</article>
+		<article class="numero" onclick="seleccionar(90);" id="n90">90</article>
+	</section>
+</section>
+
+<section class="wrap-right" id="wrap-right">
+
+	<section class="escogida" id="escogida" style="height:200px !important;padding-top:40px;box-sizing: border-box;">
+	</section>
+	<br>
+		
+	<div class="transparente">
+		<div style="font-size:1.3em;text-align:center;color:#fff;">ULTIMAS 5 BALOTAS JUGADAS</div>
+
+		<div id="ultimas5" class="ultimas5">
+			{% for ultima in ultimas5%}
+				<img src="/static/balotas/b{{ultima.balota}}.png" width="100px" style="float:right;border-radius:50%;"></img>
+			{%endfor%}
+		</div>
+	<div style="margin-top:30px;text-align:center">
+		<button id="refresh">RELOAD</button>
+		<button id="terminar" style="width:120px">TERMINAR</button>
+	</div>
+	</div>
+
+
+</section>
+	
+	<div class="suma-ganadores">
+		<div class="cartones-ganadores">
+
+			{%if f1%}
+				<div class="figura-ganadoras" id="figura-2">
+					<div class="titulo">Premio 1</div>
+					<label for="" id="suma-p1">0</label>				
+				</div>
+			{%endif%}
+
+			{%if f2%}
+				<div class="figura-ganadoras" id="figura-3">
+					<div class="titulo">Premio 2</div>
+					<label for="" id="suma-p2">0</label>				
+				</div>
+			{%endif%}
+
+			{%if f3%}				
+				<div class="figura-ganadoras" id="figura-4">
+					<div class="titulo">Premio 3</div>
+					<label for="" id="suma-p3">0</label>				
+				</div>
+			{%endif%}
+
+			{%if f4%}
+				<div class="figura-ganadoras" id="figura-5">
+					<div class="titulo">Premio 4</div>
+					<label for="" id="suma-p4">0</label>				
+				</div>
+			{%endif%}
+
+			{%if f5%}
+				<div class="figura-ganadoras" id="figura-6">
+					<div class="titulo">Premio 5</div>
+					<label for="" id="suma-p5">0</label>				
+				</div>
+			{%endif%}
+
+			{%if f6%}
+				<div class="figura-ganadoras" id="figura-6">
+					<div class="titulo">Premio 6</div>
+					<label for="" id="suma-p6">0</label>				
+				</div>
+			{%endif%}
+
+
+			{%if f7%}
+				<div class="figura-ganadoras" id="figura-7">
+					<div class="titulo">Premio 7</div>
+					<label for="" id="suma-p7">0</label>				
+				</div>
+			{%endif%}
+
+
+		</div>
+
+</section>
+
+
+	<section class="ganador1" id="ganador1">
+		<div id="mGanador"></div>
+		<br><br>
+		{% if user.is_superuser  %}
+			<a href="Javascript:cerrar();void(0);" style="background:green;color:#FFFFFF;padding:5px 10px;text-decoration:none;">Cerrar</a>	
+		{% endif %}
+	</section>
+	
+
+<script src="{% static "js/jquery.js" %}"></script>
+
+<audio id="audio" src = "" type="audio/ogg" >
+</audio>
+
+<audio id="audio1" src = "" type="audio/ogg" >
+</audio>
+
+
+<script>
+
+function seleccionar(n){
+	document.getElementById('n' + n).onclick = ""
+$.get("/partida/jugar-seleccion-manual/?id={{partidanum}}&n=" + n , function(data, status){
+			Sigue=false;
+
+
+			if(data.ganador=='termino'){
+
+				document.getElementById('ganador').style.display = 'block';
+				
+				document.getElementById('balotadecanto').style.display='none';
+				
+				document.getElementById('textoGanador').innerHTML="FIN DE LA PARTIDA";
+				
+				terminoReload = true;
+				return false;
+			}
+
+			msj = 'none';
+			hayganador = 'no';
+
+			if (data.ganador == "premio1"){
+				msj='cartonGanadorAzar';
+				hayganador='si';
+				document.getElementById('suma-p1').innerHTML = Number($('#suma-p1').html()) + 1;	
+				
+				$.get('/carton/mostrar-ganador/?figura=premio1&id={{partidanum}}',function(data){
+
+							document.getElementById('ganador').style.display = 'none';
+							document.getElementById('mGanador').innerHTML=data;
+							document.getElementById('ganador1').style.display = 'block';
+
+					});						
+
+			}else if (data.ganador == "premio2"){
+
+				msj='cartonGanadorL1';
+				hayganador='si';
+				document.getElementById('suma-p2').innerHTML = Number($('#suma-p2').html()) + 1;
+
+				Sigue = false;
+				$.get('/carton/mostrar-ganador/?figura=premio2&id={{partidanum}}',function(data){
+
+							document.getElementById('ganador').style.display = 'none';
+							document.getElementById('mGanador').innerHTML=data;
+							document.getElementById('ganador1').style.display = 'block';
+
+					});						
+
+
+			}else if(data.ganador == "premio3"){
+
+				msj='cartonGanadorL2';
+				hayganador='si';
+				document.getElementById('suma-p3').innerHTML = Number($('#suma-p3').html()) + 1;
+				Sigue = false;
+
+				$.get('/carton/mostrar-ganador/?figura=premio3&id={{partidanum}}',function(data){
+
+							document.getElementById('ganador').style.display = 'none';
+							document.getElementById('mGanador').innerHTML=data;
+							document.getElementById('ganador1').style.display = 'block';
+
+					});						
+
+
+			}else if(data.ganador == "premio4"){
+
+				msj='cartonGanadorL1L2';
+				hayganador='si';
+				document.getElementById('suma-p4').innerHTML = Number($('#suma-p4').html()) + 1;
+				Sigue = false;
+				$.get('/carton/mostrar-ganador/?figura=premio4&id={{partidanum}}',function(data){
+
+							document.getElementById('ganador').style.display = 'none';
+							document.getElementById('mGanador').innerHTML=data;
+							document.getElementById('ganador1').style.display = 'block';
+
+					});						
+
+			}else if(data.ganador == "premio5"){
+
+				msj='cartonGanadorL1L3';
+				hayganador='si';
+				document.getElementById('suma-p5').innerHTML = Number($('#suma-p5').html()) + 1;
+
+				Sigue = false;
+				$.get('/carton/mostrar-ganador/?figura=premio5&id={{partidanum}}',function(data){
+
+							document.getElementById('ganador').style.display = 'none';
+							document.getElementById('mGanador').innerHTML=data;
+							document.getElementById('ganador1').style.display = 'block';
+
+					});						
+
+			}else if(data.ganador == "premio6"){
+
+				msj='cartonGanadorL1L3';
+				hayganador='si';
+				document.getElementById('suma-p6').innerHTML = Number($('#suma-p6').html()) + 1;
+
+				Sigue = false;
+				$.get('/carton/mostrar-ganador/?figura=premio6&id={{partidanum}}',function(data){
+
+							document.getElementById('ganador').style.display = 'none';
+							document.getElementById('mGanador').innerHTML=data;
+							document.getElementById('ganador1').style.display = 'block';
+
+					});						
+
+			}else if(data.ganador == "premio7"){
+
+				msj='cartonGanadorL1L3';
+				hayganador='si';
+				document.getElementById('suma-p7').innerHTML = Number($('#suma-p7').html()) + 1;
+
+				Sigue = false;
+				$.get('/carton/mostrar-ganador/?figura=premio7&id={{partidanum}}',function(data){
+
+							document.getElementById('ganador').style.display = 'none';
+							document.getElementById('mGanador').innerHTML=data;
+							document.getElementById('ganador1').style.display = 'block';
+
+					});						
+			}
+
+
+		document.getElementById("tituloFigua").innerHTML = data.FiguraEnJuego.tituloFigua;
+
+
+		document.getElementById('balotasJugadas').innerHTML = data.balotasJugadas;
+
+		document.getElementById('n'+data.balota).style.color = "white";
+
+
+
+		document.getElementById('escogida').innerHTML = '			<img style="border-radius:50%;" class="animated bounceInLeft" src="/static/balotas/b' + data.balota + '.png" alt="" id="balotaE">'
+		 "/static/balotas/b" + data.balota + '.png';
+
+		document.getElementById('audio').src = "/static/sound/NUM" + data.balota + ".ogg";
+		document.getElementById('audio').load();
+
+
+		$.get("/partida/ultimas5/?id={{partidanum}}", function(data, status){
+			document.getElementById('ultimas5').innerHTML = data;
+		});
+	});
+
+
+	}
+
+	{% for n in numeros  %}
+		document.getElementById('n{{n.balota}}').style.color = "white";	
+		document.getElementById('n{{n.balota}}').onclick = ""
+			
+	{% endfor %}
+
+
+	//SI ES SUPER USER PUEDE DARLE PLAY
+	document.getElementById("refresh").addEventListener("click", function(){
+		location.reload();
+	});	
+//CARGA EL PLAY DEL AUDIO SI ES SUPER MUESTRA PARA EL CLICK Y TEMPORISADOR TAMBIEN SUENA EL AUDIO GANADOR
+document.getElementById("audio").addEventListener('loadeddata',function() {
+
+			setTimeout(function(){
+   				document.getElementById("balotaE").classList.add('bounceOutRight');	 		}, 2500);
+
+		document.getElementById('audio').play();
+		
+	
+
+	}
+);
+
+
+//funcion para cerrar el cuadro de mensaje del medio
+function cerrar(){
+	Sigue = false;
+	location.reload();
+}
+
+
+
+
+
+// A $( document ).ready() block.
+$( document ).ready(function() {
+	
+	 document.getElementById("wrap-right").style.height =document.getElementById("wrap-left").offsetHeight + "px";
+	 
+	 $.get('/partida/posibles/?id={{partidanum}}')
+	 .done(function(data){
+		
+		if(data.partidas.premio_1)
+			document.getElementById("suma-p1").innerHTML = data.ganadores.g1;
+
+		if(data.partidas.premio_2)
+			document.getElementById("suma-p2").innerHTML = data.ganadores.g2;
+		
+		if(data.partidas.premio_3)
+			document.getElementById("suma-p3").innerHTML = data.ganadores.g3;
+
+		if(data.partidas.premio_4)
+			document.getElementById("suma-p4").innerHTML = data.ganadores.g4;
+
+		if(data.partidas.premio_5)
+			document.getElementById("suma-p5").innerHTML = data.ganadores.g5;
+
+		if(data.partidas.premio_6)
+			document.getElementById("suma-p6").innerHTML = data.ganadores.g6;
+
+		if(data.partidas.premio_7)
+			document.getElementById("suma-p7").innerHTML = data.ganadores.g7;
+
+	});
+});
+
+
+document.getElementById("terminar").addEventListener("click", function(){
+		$.get('/partida/terminar/?id={{partidanum}}',function(data){
+			Sigue = false;
+		document.getElementById('ganador').style.display = 'block';
+		document.getElementById('balotadecanto').style.display='none';
+		document.getElementById('textoGanador').innerHTML="FIN DE LA PARTIDA";			
+		});		
+});	
+</script>
+
+
+</body>
+</html>

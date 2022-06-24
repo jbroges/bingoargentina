@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block titulo %}
+	Bingos Marvel | Editar Asignación
+{% endblock titulo %}
+
+{% block titulo_page %}
+	Editar Asignación
+{% endblock titulo_page %}
+
+
+{% block main %}
+              <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                             Editar Asignación
+                          </header>
+                          <div class="panel-body">
+                              <form class="form-horizontal " method="post" id="editAsig">
+                              {%csrf_token%}
+                              {{form.id}}
+                                  <div class="form-group">
+                                    <!--Error -->
+                                    <div class="alert alert-danger alert-dismissable"style="display:none;width:98%;margin:auto" id="ErrorSala">
+                                      <strong>Error!</strong> 
+                                        <span>Indicates a successful or positive action.</span>  
+                                    </div>
+                                    <div id="ErrorSalaBR" style="display:none"><br></div>
+                                    <!--Fin Error -->
+                                      <label class="col-sm-2 control-label">
+                                        {{form.sala.label}}
+                                      </label>
+                                      <div class="col-sm-10">
+                                        {{form.sala}}
+                                      </div>
+                                  </div>
+
+                                 <div class="form-group">
+                                  <div class="alert alert-danger alert-dismissable"style="display:none;width:98%;margin:auto" id="ErrorFecha">
+                                      <strong>Error!</strong> 
+                                        <span>Indicates a successful or positive action.</span>  
+                                    </div>
+                                    <div id="ErrorFechaBR" style="display:none"><br></div>
+                                    <!--Fin Error -->
+                                      <label class="col-sm-2 control-label">
+                                        {{form.partida.label}}
+                                      </label>
+                                      <div class="col-sm-10">
+                                        {{form.partida}}
+                                      </div>
+                                  </div>
+                                 <div class="form-group">
+                                    <!--Error -->
+                                    <div class="alert alert-danger alert-dismissable"style="display:none;width:98%;margin:auto" id="ErrorNumInc">
+                                      <strong>Error!</strong> 
+                                        <span>Indicates a successful or positive action.</span>  
+                                    </div>
+                                    <div id="ErrorNumIncBR" style="display:none"><br></div>
+                                    <!--Fin Error -->
+    								                <label class="col-sm-2 
+                                    control-label">
+                                    {{form.cantidad.label}}
+                                    </label>
+                                      <div class="col-sm-10">
+                                      {{form.cantidad}}
+                                      </div>
+                                  </div>
+
+                      <div class="form-group">
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <button type="button" class="btn btn-primary" onclick="Javascript:location.href='/carton/asignacion/'; void(0);">Cancelar</button>
+                          <button type="submit" class="btn btn-success">Guardar</button>
+                        </div>
+                      </div>
+
+
+                  </form>
+                          </div>
+                      </section>	
+  				</div>
+  			</div>
+	
+
+{% endblock main %}
+
+
+{% block js %}
+  
+
+
+
+
+
+<script src="{% static "js/cartones.js" %}"></script>
+
+
+<script>
+
+document.getElementById("id_partida").disabled = true;
+document.getElementById("id_sala").disabled = true;
+
+  $( document ).ready(function() {
+  
+  });
+
+</script>
+
+{% endblock js %}

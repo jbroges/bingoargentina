@@ -1,0 +1,560 @@
+{% load staticfiles %}
+{% load thumbnail %}
+
+<link rel="stylesheet" href="{% static "css/imprimir.css" %}">
+
+		{% for carton in  obj%}
+	<section class="wrap">
+			<strong>Carton Ganador de
+			{% if carton.ganador_1 %}
+				 - 1er Premio 
+			{%endif%}	
+		
+			{% if carton.ganador_2 %}
+				  - 2do Premio
+			{%endif%}	
+
+			{% if carton.ganador_3 %}
+				- 3er Premio
+			{%endif%}	
+
+			{% if carton.ganador_4 %}
+				- 4to Premio
+			{%endif%}	
+
+			{% if carton.ganador_5 %}
+				- 5to Premio
+			{%endif%}	
+
+			{% if carton.ganador_6 %}
+			- 6to Premio
+			{%endif%}	
+
+			{% if carton.ganador_7 %}
+			- 7mo Premio
+			{%endif%}	
+
+			</strong>
+			<br>
+			<label for="" style="font-size:.7em; font-weight:normal;"><strong>CARTON</strong> {{carton.numeroCarton}} </label>
+			<article class="carton" style="margin-bottom:10px">
+				
+				<div class="numero"
+					{% if  carton.linea_1 == 1 or  carton.linea_2 == 1 or  carton.linea_3 == 1 or  carton.linea_4 == 1  or   carton.linea_5 == 1 or   carton.linea_6 == 1 or   carton.linea_7 == 1 %}
+					
+						style="background:green;color:white" 
+				
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l1_1 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_1}}
+						{% endif %}					
+					</span>
+				</div>
+
+
+				<div class="numero"
+					{% if  carton.linea_1 == 1 or  carton.linea_2 == 1 or  carton.linea_3 == 1 or  carton.linea_4 == 1  or   carton.linea_5 == 1 or   carton.linea_6 == 1 or   carton.linea_7 == 1 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l1_2 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_2}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{%  if  carton.linea_1 == 1 or  carton.linea_2 == 1 or  carton.linea_3 == 1 or  carton.linea_4 == 1  or   carton.linea_5 == 1 or   carton.linea_6 == 1 or   carton.linea_7 == 1 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l1_3 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_3}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 1 or  carton.linea_2 == 1 or  carton.linea_3 == 1 or  carton.linea_4 == 1  or   carton.linea_5 == 1 or   carton.linea_6 == 1 or   carton.linea_7 == 1 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l1_4 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_4}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 1 or  carton.linea_2 == 1 or  carton.linea_3 == 1 or  carton.linea_4 == 1  or   carton.linea_5 == 1 or   carton.linea_6 == 1 or   carton.linea_7 == 1 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l1_5 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_5}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 1 or  carton.linea_2 == 1 or  carton.linea_3 == 1 or  carton.linea_4 == 1  or   carton.linea_5 == 1 or   carton.linea_6 == 1 or   carton.linea_7 == 1 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l1_6 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_6}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 1 or  carton.linea_2 == 1 or  carton.linea_3 == 1 or  carton.linea_4 == 1  or   carton.linea_5 == 1 or   carton.linea_6 == 1 or   carton.linea_7 == 1 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l1_7 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_7}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 1 or  carton.linea_2 == 1 or  carton.linea_3 == 1 or  carton.linea_4 == 1  or   carton.linea_5 == 1 or   carton.linea_6 == 1 or   carton.linea_7 == 1 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l1_8 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_8}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 1 or  carton.linea_2 == 1 or  carton.linea_3 == 1 or  carton.linea_4 == 1  or   carton.linea_5 == 1 or   carton.linea_6 == 1 or   carton.linea_7 == 1 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l1_9 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l1_9}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 2 or  carton.linea_2 == 2 or  carton.linea_3 == 2 or  carton.linea_4 == 2 or   carton.linea_5 == 2 or   carton.linea_6 == 2 or   carton.linea_7 == 2 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l2_1 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_1}}
+						{% endif %}					
+					</span>
+				</div>
+
+
+				<div class="numero"
+					{% if  carton.linea_1 == 2 or  carton.linea_2 == 2 or  carton.linea_3 == 2 or  carton.linea_4 == 2 or   carton.linea_5 == 2 or   carton.linea_6 == 2 or   carton.linea_7 == 2 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l2_2 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_2}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 2 or  carton.linea_2 == 2 or  carton.linea_3 == 2 or  carton.linea_4 == 2 or   carton.linea_5 == 2 or   carton.linea_6 == 2 or   carton.linea_7 == 2 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l2_3 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_3}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 2 or  carton.linea_2 == 2 or  carton.linea_3 == 2 or  carton.linea_4 == 2 or   carton.linea_5 == 2 or   carton.linea_6 == 2 or   carton.linea_7 == 2 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l2_4 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_4}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 2 or  carton.linea_2 == 2 or  carton.linea_3 == 2 or  carton.linea_4 == 2 or   carton.linea_5 == 2 or   carton.linea_6 == 2 or   carton.linea_7 == 2 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l2_5 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_5}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 2 or  carton.linea_2 == 2 or  carton.linea_3 == 2 or  carton.linea_4 == 2 or   carton.linea_5 == 2 or   carton.linea_6 == 2 or   carton.linea_7 == 2 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l2_6 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_6}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 2 or  carton.linea_2 == 2 or  carton.linea_3 == 2 or  carton.linea_4 == 2 or   carton.linea_5 == 2 or   carton.linea_6 == 2 or   carton.linea_7 == 2 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l2_7 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_7}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 2 or  carton.linea_2 == 2 or  carton.linea_3 == 2 or  carton.linea_4 == 2 or   carton.linea_5 == 2 or   carton.linea_6 == 2 or   carton.linea_7 == 2 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l2_8 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_8}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 2 or  carton.linea_2 == 2 or  carton.linea_3 == 2 or  carton.linea_4 == 2 or   carton.linea_5 == 2 or   carton.linea_6 == 2 or   carton.linea_7 == 2 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l2_9 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l2_9}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 3 or  carton.linea_2 == 3 or  carton.linea_3 == 3 or  carton.linea_4 == 3 or   carton.linea_5 == 3 or   carton.linea_6 == 3 or   carton.linea_7 == 3 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l3_1 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_1}}
+						{% endif %}					
+					</span>
+				</div>
+
+
+				<div class="numero"
+					{% if  carton.linea_1 == 3 or  carton.linea_2 == 3 or  carton.linea_3 == 3 or  carton.linea_4 == 3 or   carton.linea_5 == 3 or   carton.linea_6 == 3 or   carton.linea_7 == 3 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l3_2 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_2}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 3 or  carton.linea_2 == 3 or  carton.linea_3 == 3 or  carton.linea_4 == 3 or   carton.linea_5 == 3 or   carton.linea_6 == 3 or   carton.linea_7 == 3 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l3_3 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_3}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 3 or  carton.linea_2 == 3 or  carton.linea_3 == 3 or  carton.linea_4 == 3 or   carton.linea_5 == 3 or   carton.linea_6 == 3 or   carton.linea_7 == 3 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l3_4 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_4}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 3 or  carton.linea_2 == 3 or  carton.linea_3 == 3 or  carton.linea_4 == 3 or   carton.linea_5 == 3 or   carton.linea_6 == 3 or   carton.linea_7 == 3 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l3_5 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_5}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 3 or  carton.linea_2 == 3 or  carton.linea_3 == 3 or  carton.linea_4 == 3 or   carton.linea_5 == 3 or   carton.linea_6 == 3 or   carton.linea_7 == 3 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l3_6 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_6}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 3 or  carton.linea_2 == 3 or  carton.linea_3 == 3 or  carton.linea_4 == 3 or   carton.linea_5 == 3 or   carton.linea_6 == 3 or   carton.linea_7 == 3 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l3_7 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_7}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 3 or  carton.linea_2 == 3 or  carton.linea_3 == 3 or  carton.linea_4 == 3 or   carton.linea_5 == 3 or   carton.linea_6 == 3 or   carton.linea_7 == 3 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l3_8 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_8}}
+						{% endif %}					
+					</span>
+				</div>
+
+				<div class="numero"
+					{% if  carton.linea_1 == 3 or  carton.linea_2 == 3 or  carton.linea_3 == 3 or  carton.linea_4 == 3 or   carton.linea_5 == 3 or   carton.linea_6 == 3 or   carton.linea_7 == 3 %}
+					
+						style="background:green;color:white" 
+					
+					{%endif%}
+				>
+					<span>
+						{% if carton.carton.l3_9 == '0' %}
+                                {% thumbnail carton.propietario.sala.thumb "30x30" crop="center" as im %}
+                                    <img src="{{ im.url }}" style="border-radius:50%">
+                                {% endthumbnail %}                              
+
+						{% else %}
+							{{carton.carton.l3_9}}
+						{% endif %}					
+					</span>
+				</div>
+			</article>
+	</section>
+		{% endfor %}
+<br>

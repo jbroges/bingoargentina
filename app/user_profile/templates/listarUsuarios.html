@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load thumbnail %}
+{% block titulo %}
+  Bingos Marvel | Usuarios
+{% endblock titulo %}
+
+{% block titulo_page %}
+  Usuarios
+{% endblock titulo_page %}
+
+{% block main %}
+     
+
+
+   <a class="btn btn-primary" href="/usuario/crear/"><i class="fa fa-plus"></i> Nuevo</a><br><br>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <section class="panel">
+        <header class="panel-heading">
+          Listado de Usuarios
+        </header>
+        <div class="table-responsive">
+          <table class="table  table-hover">
+            <thead>
+              <tr>
+                <th>Nick</th>
+                <th>Nombre y Apellido</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Avatar</th>
+                <th>Sala</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for usuario in object_list%}
+                <tr id="{{usuario.id}}_fila">
+                  <td>{{ usuario.username }}</td>
+                  <td>{{ usuario.first_name }} {{ usuario.last_name }}</td>
+                  <td>{{ usuario.email }}</td>
+                  <td>{{ usuario.userprofile.telefono }}</td>
+                  <td align="">
+                    {% thumbnail usuario.userprofile.thumb "30x30" crop="center" as im %}
+                      <img src="{{ im.url }}" class="img-circle" alt="">
+                    {% endthumbnail %}
+                  </td>                          
+                  <td>{{ usuario.userprofile.sala }}</td>
+                  <td align="center"> 
+
+                    <div class="btn-group">
+                      <a class="btn btn-primary" href="/usuario/editar/{{usuario.pk}}/"><i class="icon_pencil-edit"></i></a>
+                                        
+                      <a class="btn btn-danger" href="Javascript:BorrarUser({{usuario.pk}},'{{csrf_token}}');void(0);"><i class="icon_close_alt2"></i></a>
+                    </div>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+            {# .... **Now the pagination section** .... #}
+            &nbsp;&nbsp;
+            {% if is_paginated %}
+              <ul class="pagination">
+                {% if page_obj.has_previous %}
+                  <li><a href="?page=1"><<</a></li>
+                  <li><a href="?page={{ page_obj.previous_page_number }}"><</a></li>
+                {% endif %}
+                {% for i in paginator.page_range %}
+                  <li {% if page_obj.number == i %} class="active" {% endif %}><a href="?page={{i}}">{{i}}</a></li>
+                {% endfor %}
+                {% if page_obj.has_next %}
+                  <li><a href="?page={{ page_obj.next_page_number }}">></a></li>
+                  <li><a href="?page={{ page_obj.paginator.num_pages }}">>></a></li>
+                {% endif %}
+              </ul>
+            {% endif %}
+
+
+        </div>
+      </section>
+  	</div>
+  </div>
+
+{% endblock main %}	
+
+
+{% block js %}
+  <script src="{% static "js/users_scripts.js" %}"></script>
+
+{% endblock js %}

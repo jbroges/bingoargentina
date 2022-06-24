@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block titulo %}
+  Bingos Marvel |  Cartones No Vendidos
+{% endblock titulo %}
+
+{% block titulo_page %}
+	Cartones No Vendidos
+{% endblock titulo_page %}
+
+
+{% block main %}
+<div class="row">
+  <div class="col-lg-4">
+  	  <a class="btn btn-primary" href="/carton/asignacion/crear/"><i class="fa fa-plus"></i> Nuevo</a>
+      <a class="btn btn-primary" id="descargar" href="#"><i class="fa fa fa-download"></i></a>
+      <a class="btn btn-primary" href="#Carga-Excel" id="triggerFile"><i class="fa fa fa-upload"></i> Cargar Excel</a>
+    <input type="file" name="foo" id="excel">
+
+  </div>
+  <div class="col-lg-8">
+  <form method="POST" action="/carton/asignacion/">
+  {% csrf_token %}    
+     <button type="submit" style="float:right;margin-left:5px"  class="btn btn-success"><i class="fa fa-search"></i></button>
+
+    <input class="form-control round-input" style="width:200px;float:right" id="diaBus" name="diaBus" placeholder="Ingrese la Fecha" type="text">
+
+    <label style="float:right;margin-right:5px;margin-top:5px">
+     Buscar:   
+     </label>
+  </form>
+  </div>
+</div>
+<br>
+              <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              Listado de Cartones No Vendidos
+                          </header>
+                          <div class="table-responsive">
+                            <table class="table  table-hover">
+                              <thead>
+                                <tr>
+                                  <th>Partida</th>
+                                  <th>Sala</th>
+                                  <th>correlat. Inicial</th>
+                                  <th>correlat. Final</th>
+                                  <th>Acción</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              {% for sala in object_list%}
+                                <tr id="{{sala.pk}}_fila">
+                                  <td>{{sala.partida}}</td>
+                                  <td>{{sala.sala}}</td>
+                                  <td>{{sala.correlat_ini}}</td>
+                                  <td>{{sala.correlat_fin}}</td>
+                                  <td>
+	                                  <div class="btn-group">
+	                                      <a class="btn btn-primary" href="editar/{{sala.id}}/"><i class="icon_pencil-edit"></i></a>
+	                                      
+	                                      <a class="btn btn-danger" href="Javascript:BorrarAsig({{sala.pk}},'{{csrf_token}}');void(0);"><i class="icon_close_alt2"></i></a>
+	                                  </div>
+                                  </td>
+                                </tr>
+                                {% endfor %}
+                              </tbody>
+                             </table>
+        {# .... **Now the pagination section** .... #}
+            &nbsp;&nbsp;
+            {% if is_paginated %}
+              <ul class="pagination">
+                {% if page_obj.has_previous %}
+                  <li><a href="?page=1"><<</a></li>
+                  <li><a href="?page={{ page_obj.previous_page_number }}"><</a></li>
+                {% endif %}
+                {% for i in paginator.page_range %}
+                  <li {% if page_obj.number == i %} class="active" {% endif %}><a href="?page={{i}}">{{i}}</a></li>
+                {% endfor %}
+                {% if page_obj.has_next %}
+                  <li><a href="?page={{ page_obj.next_page_number }}">></a></li>
+                  <li><a href="?page={{ page_obj.paginator.num_pages }}">>></a></li>
+                {% endif %}
+              </ul>
+            {% endif %}
+                             
+                          </div>
+
+                      </section>
+                  </div>
+              </div>
+	
+
+{% endblock main %}
+
+{% block js %}
+
+<script>
+
+$('#diaBus').datepicker();
+  var date = new Date('{{view.dia}}');
+  mes = date.getMonth() + 1
+  if(mes<10)
+    mes ='0'  + mes;
+
+  if(date.getDate()<10)
+    dia ='0'  + date.getDate();
+  else 
+    dia = date.getDate();
+
+  final = mes + '/' +  dia + '/' +  date.getFullYear();
+
+  $('#diaBus').val(final);
+
+
+document.getElementById('descargar').href = "/reportes/genrear-excel-partidas/?v=" + $('#diaBus').val();
+
+$('#diaBus').change(function(){
+document.getElementById('descargar').href = "/reportes/genrear-excel-partidas/?v=" + $('#diaBus').val();});
+
+
+
+
+
+$('#triggerFile').on('click', function(e){
+        e.preventDefault()
+        $("#excel").trigger('click')
+    });
+    
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+
+
+          var formData = new FormData();
+            formData.append('csrfmiddlewaretoken', $("input[name='csrfmiddlewaretoken']").val());
+            formData.append('file', $('#excel')[0].files[0]);
+
+
+             $.ajax({
+                     type: "POST",
+                     url: 'generar-de-excel/',
+                     enctype: 'multipart/form-data',         
+                     data: formData, // serializes the form's elements.
+                     processData: false,  // tell jQuery not to process the data
+                     contentType: false,  // tell jQuery not to set contentType           
+                     success: function(data)
+                     {
+                        alert('Carga Exitosa');
+                     }
+                   });
+            return false;
+
+          }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#excel").change(function(){
+    readURL(this);
+});
+
+
+</script>
+
+
+
+
+<script src="{% static "js/cartones.js" %}"></script>
+
+{% endblock js %}
